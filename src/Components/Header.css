@@ -3,9 +3,7 @@
     padding: 0;
 }
 
-.header .dashboard{
 
-}
 
 .header .dashboard .dashline{
     display: flex;
@@ -94,10 +92,17 @@ border-radius: 10px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         padding: 1px;
+        margin: 5px auto;
     }
 
     .header .scoreboard .card{
         width: auto;
     }
+
+    .header .scoreboard .card i{
+        font-size: 30px;
+        margin-right: 5px;
+        padding: 5px;
+       }
 
 }
