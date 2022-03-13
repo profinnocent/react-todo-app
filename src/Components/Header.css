@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.header .dashboard{
+
+}
+
+.header .dashboard .dashline{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secclr);
+    margin: 5px 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.header .dashboard .dashline .dbicons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .dashboard .dashline .dbicons i{
+    margin: 0 15px;
+    font-size: 24px;
+}
+
+.header .dashboard .dashline .dbicons i:nth-child(1){
+   color: var(--acentclr);
+   position: relative;
+}
+
+.header .dashboard .dashline .dbicons i:nth-child(1) span{
+    color: var(--white);
+    font-size: 8px;
+    background-color: red;
+    padding: 4px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0.1px;
+ }
+
+.header .dashboard .dashline .dbicons i:nth-child(2){
+   background-color: rgb(117, 155, 155);
+   padding: 10px;
+   border-radius: 50%;
+}
+
+.header .scoreboard{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--secclr);
+    margin: 5px 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.header .scoreboard .card{
+    background-color: var(--priclr);
+    margin: 10px;
+    padding: 10px;
+    width: 23%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .scoreboard .card i{
+ font-size: 36px;
+ margin-right: 15px;
+ color: var(--acentclr);
+ /* border: 0.1px solid var(--acentclr); */
+ padding: 10px;
+border-radius: 10px;
+}
+
+.header .scoreboard .card2 i{
+    color: lightcoral;
+}   
+
+.header .scoreboard .card3 i{
+    color: lightgreen;
+}  
+
+
+/* Media Query --------------------------- */
+@media (max-width:576px){
+    .header .scoreboard{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 1px;
+    }
+
+    .header .scoreboard .card{
+        width: auto;
+    }
+
+}
