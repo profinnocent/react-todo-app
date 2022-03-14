@@ -15,6 +15,7 @@ function App() {
   const addTask = () => {
     setTodos([{text: inputtext,time: new Date().getTime() }, ...todos])
     setInputText("")
+    setData([...data])
   }
 
   return (
