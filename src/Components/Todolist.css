@@ -1,0 +1,83 @@
+.todos h3{
+    text-align: left;
+    margin: auto 200px;
+    border-bottom: 1px solid grey;
+}
+
+
+.todos ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.todos ul li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secclr);
+    padding: 5px 20px;
+    border-radius: 5px;
+    margin: 3px auto;
+    width: 70%;
+}
+
+.todos ul li div{
+    margin: 2.5px;
+    /* background-color: aqua; */
+}  
+
+.todos ul li .content{
+    text-align: left;
+} 
+
+.todos ul li .li-img{
+margin-right: 5px;
+}
+
+.todos ul li .li-img i{
+    font-size: 24px;
+    color: var(--acentclr);
+    border: 0.5px solid var(--acentclr);
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.todos ul li .btns{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+} 
+
+.todos ul li .btns button{
+    padding: 1px 5px;
+    border: none;
+    border-radius: 2px;
+}
+
+.todos ul li .btns button:nth-child(1){
+    background-color: lightcoral;
+    margin-bottom: 7px;
+}
+
+.todos ul li .btns button:nth-child(2){
+    background-color: lightgreen;
+    margin-top: 7px;
+
+}
+
+
+
+/* Media Query ------------------------------ */
+@media (max-width:576px){
+    .todos ul li{
+        width: 95%;
+        padding: 5px;
+    }
+
+    .todos h3{
+        margin: auto 10px;
+    }
+}

@@ -14,88 +14,16 @@
 
 .todo .inputs .inputbtn input{
     height: 25px;
+    background-color: var(--white);
+    padding-left: 5px;
+    border: none;
+outline: none;
 }
 
 .todo .inputs .inputbtn button{
     padding: 5px;
     background-color: var(--acentclr);
-}
-
-.todo .todos h3{
-    text-align: left;
-    margin: auto 200px;
-    border-bottom: 1px solid grey;
-}
-
-
-.todo .todos ul{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.todo .todos ul li{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--secclr);
-    padding: 5px 20px;
     border-radius: 5px;
-    margin: 3px auto;
-    width: 70%;
+    cursor: pointer;
 }
 
-.todo .todos ul li div{
-    margin: 2.5px;
-    /* background-color: aqua; */
-}  
-
-.todo .todos ul li .content{
-    text-align: left;
-} 
-
-/* .todo .todos ul li .li-img{
-    background-color: aqua;
-} */
-
-.todo .todos ul li .li-img i{
-    font-size: 24px;
-    color: var(--acentclr);
-}
-
-.todo .todos ul li .btns{
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-} 
-
-.todo .todos ul li .btns button{
-    margin: 3px;
-    padding: 1px 5px;
-    border: none;
-    border-radius: 2px;
-}
-
-.todo .todos ul li .btns button:nth-child(1){
-    background-color: lightcoral;
-}
-
-.todo .todos ul li .btns button:nth-child(2){
-    background-color: var(--acentclr);
-}
-
-
-
-/* Media Query ------------------------------ */
-@media (max-width:576px){
-    .todo .todos ul li{
-        width: 95%;
-        padding: 5px;
-    }
-
-    .todo .todos h3{
-        margin: auto 10px;
-    }
-}
