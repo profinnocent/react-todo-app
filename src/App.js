@@ -11,9 +11,14 @@ function App() {
 
   //Add New task function
   const addTask = () => {
-    setTodos([{id: Math.floor(Math.random()*100000), text: inputtext, time: new Date().toLocaleTimeString(), isCompleted: false }, ...todos])
+    if(inputtext !== ""){
+    setTodos([...todos,{id: Math.floor(Math.random()*100000), text: inputtext, time: new Date().toLocaleTimeString(), isCompleted: false }])
     setInputText("")
     setData(data)
+    }
+    else{
+      alert("Please enter a task")
+    }
   }
 
   //Delete a Task
@@ -21,10 +26,15 @@ function App() {
     setTodos([...todos].filter(td => td.id !== id))
   }  
 
+  //Edit Todo task
+  const editTasK = (ide) => {
+    console.log("edit")
+  }
+
   //Toggle Completed button
-const toggleCompleted = (id) => {
+const toggleCompleted = (idt) => {
   const newTodos = [...todos].map((todo) => {
-    if(todo.id === id){
+    if(todo.id === idt){
       todo.isCompleted = !todo.isCompleted
     }
     return todo
@@ -50,7 +60,8 @@ const toggleCompleted = (id) => {
       <Todolist 
       todos={todos}
       delTask={(tdid) => delTask(tdid)}
-      toggleCompleted={(todoid) => toggleCompleted(todoid)}
+      toggleCompleted={(todid) => toggleCompleted(todid)}
+      editTask={(teid) => editTasK(teid)}
       />
     </div>
   );

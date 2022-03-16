@@ -1,6 +1,6 @@
 import './Todolist.css'
 
-const Todolist = ({todos, delTask, toggleCompleted}) => {
+const Todolist = ({todos, delTask, toggleCompleted, editTask}) => {
 
 
   return (
@@ -21,7 +21,7 @@ const Todolist = ({todos, delTask, toggleCompleted}) => {
              </div>
              <div className="btns">
                <button onClick={() => delTask(todo.id)}>Delete</button>
-               <button> -Edit- </button>
+               <button onClick={() => editTask(todo.id)}> -Edit- </button>
              </div>
              <input type="checkbox"
              onChange={() => toggleCompleted(todo.id)}
