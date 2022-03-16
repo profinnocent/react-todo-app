@@ -1,7 +1,7 @@
 import './Header.css'
 
 
-const Header = ({dataH, todosH}) => {
+const Header = ({data, todos}) => {
    
     return (
         <div className='header'>
@@ -16,10 +16,10 @@ const Header = ({dataH, todosH}) => {
                 </div>
 
                 <div className="scoreboard">
-                    <div className='card card1'><div className="imgbox"><i className="fa fa-clipboard-list"></i></div><div className="writeup"> <h2>{todosH.length}</h2><span>Total Tasks</span></div></div>
-                    <div className='card card2'><div className="imgbox"><i className="fa fa-circle-xmark"></i></div><div className="writeup"><h2>{todosH.length-dataH[1]} <span> Tasks</span></h2><span>Uncompleted</span></div></div>
-                    <div className='card card3'><div className="imgbox"><i className="fa fa-circle-check"></i></div><div className="writeup"><h2>{dataH[1]}<span> Tasks</span> </h2><span>Completed</span></div></div>
-                    <div className='card card4'><div className="imgbox"><i className="fa fa-percent"></i></div><div className="writeup"><h2>{((dataH[1]/todosH.length)*100).toFixed(1)}%</h2><span>Performance</span></div></div>
+                    <div className='card card1'><div className="imgbox"><i className="fa fa-clipboard-list"></i></div><div className="writeup"> <h2>{todos.length}</h2><span>Total Tasks</span></div></div>
+                    <div className='card card2'><div className="imgbox"><i className="fa fa-circle-xmark"></i></div><div className="writeup"><h2>{todos.length-data} <span> Tasks</span></h2><span>Uncompleted</span></div></div>
+                    <div className='card card3'><div className="imgbox"><i className="fa fa-circle-check"></i></div><div className="writeup"><h2>{data}<span> Tasks</span> </h2><span>Completed</span></div></div>
+                    <div className='card card4'><div className="imgbox"><i className="fa fa-percent"></i></div><div className="writeup"><h2>{((data/todos.length)*100).toFixed(1)}%</h2><span>Performance</span></div></div>
                 </div>
                
             </div>

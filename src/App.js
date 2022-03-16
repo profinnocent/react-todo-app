@@ -1,33 +1,47 @@
 import "./App.css";
 import Header from "./Components/Header";
 import Todo from "./Components/Todo";
-import React, { useState } from "react";
-import Todolist from "./Components/Todolist";
+import React, { useState } from "react"
+import Todolist from "./Components/Todolist"
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  const [data, setData] = useState([0, 0]);
-  const [inputtext, setInputText] = useState("");
-
-  //console.log(todos);
+  const [todos, setTodos] = useState([])
+  const [data, setData] = useState(0)
+  let [inputtext, setInputText] = useState("")
 
   //Add New task function
   const addTask = () => {
-    setTodos([{text: inputtext,time: new Date().getTime() }, ...todos])
-    setInputText("")
-    setData([...data])
+    setTodos([{id: Math.floor(Math.random()*100000), text: inputtext, time: new Date().toLocaleTimeString(), isCompleted: false }, ...todos])
+    setInputText("abc")
+    setData(data)
   }
+
+  //Delete a Task
+  const delTask = (text) => {
+    setTodos(todos.filter(td => td.text !== text))
+  }  
+
+  //Toggle Complete button
+
+
+
+  console.log(todos)
 
   return (
     <div className="App">
-      <Header dataH={data} todosH={todos} />
+      <Header 
+      data={data} todos={todos} 
+      />
       <Todo
-        inputT={inputtext}
+        value={inputtext}
         changeText={(e) => setInputText(e.target.value)}
-        todosT={todos}
+        todos={todos}
         addTask={addTask}
       />
-      <Todolist todos={todos}/>
+      <Todolist 
+      todos={todos}
+      delTask={(text) => delTask(text)}
+      />
     </div>
   );
 }

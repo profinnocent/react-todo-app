@@ -1,6 +1,6 @@
 import "./Todo.css";
 
-const Todo = ({ inputT, changeText, todosT, addTask }) => {
+const Todo = ({ inputtext, changeText, todos, addTask }) => {
   // const handleclick = () => {};
 
   return (
@@ -11,8 +11,8 @@ const Todo = ({ inputT, changeText, todosT, addTask }) => {
           <input
             type="text"
             placeholder="Enter a task here"
-            onChange={(e) => changeText(e)}
-            value={inputT}
+            onChange={e => changeText(e)}
+            value={inputtext}
           />
           <button onClick={addTask}>
             Add Task <i className="fa fa-circle-plus"></i>
