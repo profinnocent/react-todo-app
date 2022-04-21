@@ -1,67 +1,83 @@
 import "./App.css";
 import Header from "./Components/Header";
 import Todo from "./Components/Todo";
-import React, { useState } from "react"
-import Todolist from "./Components/Todolist"
+import React, { useState } from "react";
+import Todolist from "./Components/Todolist";
 
 function App() {
-  const [todos, setTodos] = useState([])
-  const [data, setData] = useState(0)
-  let [inputtext, setInputText] = useState("")
+  const [todos, setTodos] = useState([]);
+  const [data, setData] = useState(0);
+  let [inputtext, setInputText] = useState("");
+  const [isCompleted, setIsCompleted] = useState(false);
 
   //Add New task function
   const addTask = () => {
-    if(inputtext !== ""){
-    setTodos([...todos,{id: Math.floor(Math.random()*100000), text: inputtext, time: new Date().toLocaleTimeString(), isCompleted: false }])
-    setInputText("")
-    setData(data)
+    if (inputtext !== "") {
+      setTodos([
+        ...todos,
+        {
+          id: Math.floor(Math.random() * 100000),
+          text: inputtext,
+          time: new Date().toLocaleTimeString(),
+          isCompleted: false,
+        },
+      ]);
+      setInputText("");
+      setData(data);
+    } else {
+      alert("Please enter a task");
     }
-    else{
-      alert("Please enter a task")
-    }
-  }
+  };
 
   //Delete a Task
   const delTask = (id) => {
-    setTodos([...todos].filter(td => td.id !== id))
-  }  
+    setTodos([...todos].filter((td) => td.id !== id));
+  };
 
   //Edit Todo task
   const editTasK = (ide) => {
-    console.log("edit")
-  }
+    if (inputtext === "") {
+      alert(
+        "Type the new task in the input box and press EDIT button of the Task you want to change"
+      );
+    } else {
+      setTodos(
+        [...todos].map((todo) =>
+          todo.id === ide ? { ...todo, text: inputtext } : todo
+        )
+      );
+      setInputText("");
+    }
+  };
 
   //Toggle Completed button
-const toggleCompleted = (idt) => {
-  const newTodos = [...todos].map((todo) => {
-    if(todo.id === idt){
-      todo.isCompleted = !todo.isCompleted
-    }
-    return todo
-  })
+  const toggleCompleted = (e, idt) => {
+    e.preventDefault();
 
-  setTodos([newTodos])
-}
+    setTodos(
+      todos.map((todo) =>
+        todo.id === idt ? setIsCompleted(!isCompleted) : todo
+      )
+    );
+  };
 
-
-  console.log(todos)
+  console.log(todos);
 
   return (
     <div className="App">
-      <Header 
-      data={data} todos={todos} 
-      />
+      <Header data={data} todos={todos} />
       <Todo
         inputtext={inputtext}
         changeText={(e) => setInputText(e.target.value)}
         todos={todos}
         addTask={addTask}
       />
-      <Todolist 
-      todos={todos}
-      delTask={(tdid) => delTask(tdid)}
-      toggleCompleted={(todid) => toggleCompleted(todid)}
-      editTask={(teid) => editTasK(teid)}
+      <Todolist
+        todos={todos}
+        delTask={(tdid) => delTask(tdid)}
+        toggleCompleted={(e) => toggleCompleted(e)}
+        isCompleted={isCompleted}
+        editTask={(teid) => editTasK(teid)}
       />
     </div>
   );

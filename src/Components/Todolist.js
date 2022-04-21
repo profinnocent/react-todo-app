@@ -1,7 +1,7 @@
-import './Todolist.css'
+import { useState } from 'react';
+import './Todolist.css';
 
-const Todolist = ({todos, delTask, toggleCompleted, editTask}) => {
-
+const Todolist = ({todos, delTask, toggleCompleted, isCompleted, editTask}) => {
 
   return (
       <div className="todos">
@@ -21,14 +21,16 @@ const Todolist = ({todos, delTask, toggleCompleted, editTask}) => {
              </div>
              <div className="btns">
                <button onClick={() => delTask(todo.id)}>Delete</button>
-               <button onClick={() => editTask(todo.id)}> -Edit- </button>
+               <button onClick={() => editTask(todo.id)}>Update</button>
              </div>
              <input type="checkbox"
-             onChange={() => toggleCompleted(todo.id)}
+             onChange={toggleCompleted}
+             value={isCompleted}
              checked={todo.isCompleted}/>
            </li>
           )}
         </ul> 
+       
       </div>
   )
 }
