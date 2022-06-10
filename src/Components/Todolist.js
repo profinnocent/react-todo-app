@@ -1,14 +1,17 @@
-import { useState } from 'react';
 import './Todolist.css';
 
-const Todolist = ({todos, delTask, toggleCompleted, isCompleted, editTask}) => {
+const Todolist = ({todos, delTask, toggleCompleted, tdIndex, editTask}) => {
+  // console.log("Before display " + todos);
+ // alert("Before display " + todos)
+
 
   return (
       <div className="todos">
         <h3>Todo List</h3>
         <ul>
-          {todos.map((todo) => 
-             <li key={todo.text + Math.floor(Math.random()*10000)}>
+          {
+          todos.map((todo, index) => 
+             <li key={index}>
              <div className="li-img">
                <i className="fa fa-clipboard-list"></i>
              </div>
@@ -24,15 +27,17 @@ const Todolist = ({todos, delTask, toggleCompleted, isCompleted, editTask}) => {
                <button onClick={() => editTask(todo.id)}>Update</button>
              </div>
              <input type="checkbox"
-             onChange={toggleCompleted}
-             value={isCompleted}
+            // value={false}
+            name="chkbox"
+             onChange={() => toggleCompleted(todo.id)}
              checked={todo.isCompleted}/>
            </li>
-          )}
+          )
+          }
         </ul> 
        
       </div>
   )
 }
 
-export default Todolist
+export default Todolist;

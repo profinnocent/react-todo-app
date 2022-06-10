@@ -1,83 +1,115 @@
 import "./App.css";
 import Header from "./Components/Header";
-import Todo from "./Components/Todo";
+import AddTodo from "./Components/AddTodo";
 import React, { useState } from "react";
 import Todolist from "./Components/Todolist";
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [data, setData] = useState(0);
-  let [inputtext, setInputText] = useState("");
-  const [isCompleted, setIsCompleted] = useState(false);
+  const [inputtext, setInputText] = useState("");
+  //const [checkState, setCheckState] = useState([]);
+  const [tdIndex, setTdIndex] = useState(0);
 
+console.log(todos)
   //Add New task function
   const addTask = () => {
+    // console.log("Before pushing" + todos);
+
     if (inputtext !== "") {
-      setTodos([
+      //setIsCompleted([...isCompleted, false]);
+
+      setTodos(
+        [
         ...todos,
         {
-          id: Math.floor(Math.random() * 100000),
+          id: tdIndex,
           text: inputtext,
           time: new Date().toLocaleTimeString(),
           isCompleted: false,
-        },
-      ]);
+        }
+      ]
+      );
       setInputText("");
-      setData(data);
+      setTdIndex(c => c + 1);
+
+      //alert(tdIndex);
+      // console.log("After pushing" + todos);
+
     } else {
+
       alert("Please enter a task");
+
     }
   };
 
+
   //Delete a Task
   const delTask = (id) => {
-    setTodos([...todos].filter((td) => td.id !== id));
+    setTodos(todos.filter((td) => td.id !== id));
   };
 
+
   //Edit Todo task
-  const editTasK = (ide) => {
+  const editTasK = (id) => {
+  //   alert(btntext);
+  //   if(btntext === "Edit"){
+  //   alert('Update btn clicked' + id);
+  //   let theTodo = todos.filter((td) => td.id === id);
+  //   console.log(theTodo);
+  //   setInputText(theTodo[0].text);
+  //   btntext = "Save"
+  //   }else{
+  //     alert(btntext);
+  //     //setbtntext("Edit")
+  //   }
+  // }
+
     if (inputtext === "") {
       alert(
-        "Type the new task in the input box and press EDIT button of the Task you want to change"
+        "Type the new task in the input box and press UPDATE button of the Task you want to change"
       );
     } else {
       setTodos(
         [...todos].map((todo) =>
-          todo.id === ide ? { ...todo, text: inputtext } : todo
+          todo.id === id ? { ...todo, text: inputtext } : todo
         )
       );
       setInputText("");
     }
-  };
+  }
 
   //Toggle Completed button
-  const toggleCompleted = (e, idt) => {
-    e.preventDefault();
+  const toggleCompleted = (id) => {
 
     setTodos(
       todos.map((todo) =>
-        todo.id === idt ? setIsCompleted(!isCompleted) : todo
+        todo.id === id ? {...todo, isCompleted: !todo.isCompleted} : todo
       )
     );
+
+    //Set complete task score
+    todos.map(todo => todo.isCompleted === false  ? setData(c => c + 1)  : data);
+
   };
 
-  console.log(todos);
+  // console.log(todos);
 
   return (
     <div className="App">
       <Header data={data} todos={todos} />
-      <Todo
+      <AddTodo
         inputtext={inputtext}
         changeText={(e) => setInputText(e.target.value)}
-        todos={todos}
         addTask={addTask}
       />
       <Todolist
         todos={todos}
         delTask={(tdid) => delTask(tdid)}
-        toggleCompleted={(e) => toggleCompleted(e)}
-        isCompleted={isCompleted}
-        editTask={(teid) => editTasK(teid)}
+        toggleCompleted={(idt) => toggleCompleted(idt)}
+        //isCompleted={isCompleted}
+        editTask={(id) => editTasK(id)}
+        tdIndex={tdIndex}
       />
     </div>
   );

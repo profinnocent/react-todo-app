@@ -1,7 +1,6 @@
-import "./Todo.css";
+import "./AddTodo.css";
 
-const Todo = ({ inputtext, changeText, todos, addTask }) => {
-  // const handleclick = () => {};
+const AddTodo = ({ inputtext, changeText, addTask }) => {
 
   return (
     <div className="todo">
@@ -11,7 +10,7 @@ const Todo = ({ inputtext, changeText, todos, addTask }) => {
           <input
             type="text"
             placeholder="Enter a task here"
-            onChange={e => changeText(e)}
+            onChange={changeText}
             value={inputtext}
           />
           <button onClick={addTask}>
@@ -25,4 +24,4 @@ const Todo = ({ inputtext, changeText, todos, addTask }) => {
   );
 };
 
-export default Todo;
+export default AddTodo;
