@@ -88,8 +88,9 @@ console.log(todos)
       )
     );
 
-    //Set complete task score
-    todos.map(todo => todo.isCompleted === false  ? setData(c => c + 1)  : data);
+    //Count completed task
+    setData(0);
+    [...todos].map(todo => todo.isCompleted === true  ? setData(c => c - 1)  : setData(c => c + 1));
 
   };
 

@@ -84,7 +84,7 @@
 }
 
 /* Media Query --------------------------- */
-@media (max-width: 576px) {
+@media (max-width: 876px) {
   .header .scoreboard {
     display: grid;
     grid-template-columns: 1fr 1fr;

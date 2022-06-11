@@ -1,6 +1,6 @@
 import './Todolist.css';
 
-const Todolist = ({todos, delTask, toggleCompleted, tdIndex, editTask}) => {
+const Todolist = ({todos, delTask, toggleCompleted, editTask}) => {
   // console.log("Before display " + todos);
  // alert("Before display " + todos)
 
