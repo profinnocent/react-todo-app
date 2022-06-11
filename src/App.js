@@ -12,6 +12,15 @@ function App() {
   const [tdIndex, setTdIndex] = useState(0);
 
 console.log(todos)
+
+  //Handle Keyup
+  const handleKeyup = (e) => {
+    if(e.key === "Enter"){
+      addTask();
+    }
+
+  }
+
   //Add New task function
   const addTask = () => {
     // console.log("Before pushing" + todos);
@@ -90,7 +99,7 @@ console.log(todos)
 
     //Count completed task
     setData(0);
-    [...todos].map(todo => todo.isCompleted === true  ? setData(c => c - 1)  : setData(c => c + 1));
+    [...todos].map(todo => todo.isCompleted === true  ? setData(data)  : setData(data => data + 1));
 
   };
 
@@ -103,6 +112,7 @@ console.log(todos)
         inputtext={inputtext}
         changeText={(e) => setInputText(e.target.value)}
         addTask={addTask}
+        handleKeyup={handleKeyup}
       />
       <Todolist
         todos={todos}

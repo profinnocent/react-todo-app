@@ -1,12 +1,12 @@
 import "./AddTodo.css";
 
-const AddTodo = ({ inputtext, changeText, addTask }) => {
+const AddTodo = ({ inputtext, changeText, addTask, handleKeyup }) => {
 
   return (
     <div className="todo">
       <div className="inputs">
         <h3>Tasks Manager</h3>
-        <div className="inputbtn">
+        <div className="inputbtn" onKeyUpCapture={handleKeyup}>
           <input
             type="text"
             placeholder="Enter a task here"
