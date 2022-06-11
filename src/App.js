@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./Components/Header";
 import AddTodo from "./Components/AddTodo";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Todolist from "./Components/Todolist";
 
 function App() {
@@ -13,12 +13,27 @@ function App() {
 
 console.log(todos)
 
+//Use Effect to persist data on first run
+useEffect(() => {
+  if(localStorage.getItem('react-todos') != null){
+    setTodos(JSON.parse(localStorage.getItem('react-todos')));
+  }else{
+    localStorage.setItem('react-todos', JSON.stringify([]));
+  }
+},[])
+
+
+//Use Effect to update localstorage
+useEffect(() => {
+  localStorage.setItem('react-todos', JSON.stringify(todos));
+}, [todos])
+
+
   //Handle Keyup
   const handleKeyup = (e) => {
     if(e.key === "Enter"){
       addTask();
     }
-
   }
 
   //Add New task function
@@ -39,6 +54,11 @@ console.log(todos)
         }
       ]
       );
+
+        //Update todos with localstorage
+        //localStorage.setItem('react-todos', JSON.stringify(todos));
+
+
       setInputText("");
       setTdIndex(c => c + 1);
 
@@ -91,11 +111,9 @@ console.log(todos)
   //Toggle Completed button
   const toggleCompleted = (id) => {
 
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? {...todo, isCompleted: !todo.isCompleted} : todo
-      )
-    );
+      let newTodos = todos.map((todo) => todo.id === id ? {...todo, isCompleted: !todo.isCompleted} : todo )
+
+      setTodos(newTodos);
 
     //Count completed task
     setData(0);

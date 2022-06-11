@@ -23,7 +23,7 @@ const Todolist = ({todos, delTask, toggleCompleted, editTask}) => {
               <span>{todo.time}</span>
              </div>
              <div className="btns">
-               <button onClick={() => delTask(todo.id)}>Delete</button>
+               <button onClick={() => delTask(todo.id)}>Del &nbsp; <i className="fa fa-trash"></i> </button>
                <button onClick={() => editTask(todo.id)}>Update</button>
              </div>
              <input type="checkbox"
